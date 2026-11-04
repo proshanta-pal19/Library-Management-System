@@ -1,0 +1,49 @@
+# Declares a blueprint named Book
+
+class Book:
+    '''Represents a single book in the library'''
+
+    # It is a constructor which runs automatically whenever we need to create a new book.
+    def __init__(self, title: str, author: str, isbn: str) -> None:
+        self._title = title
+        self._author = author
+        self._isbn = isbn
+        self._is_available = True # Assume, every new book starts as available
+
+    # Read-only properties
+    @property
+    def title(self) -> str:
+        return self._title
+
+    @property 
+    def author(self) -> str:
+        return self._author
+
+    @property
+    def isbn(self) -> str:
+        return self._isbn
+
+    @property
+    def is_available(self) -> bool:
+        return self._is_available
+
+    # Behaviour
+    def mark_as_borrowed(self) -> None:
+        '''Mark the book as borrowed. Fails if it is already borrowed'''
+        if not self._is_available:
+            raise ValueError(f'{self} is already borrowed.')
+        self._is_available = False
+
+    def mark_as_returned(self) -> None:
+        '''Mark the book as returned. Fails if it is already returned'''
+        if self._is_available:
+            raise ValueError(f'{self} was not borrowed.')
+        self._is_available = True
+
+    # Defines string representation of an object.
+    def __str__(self) -> str:
+        return f"'{self.title}' by {self.author}"
+
+    # Defines an unambiguous, and detailed developer-focused description
+    def __repr__(self):
+        return f"Book(title={self.title!r}, author={self.author!r}, isbn={self.isbn!r})"
