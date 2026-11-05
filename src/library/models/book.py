@@ -45,5 +45,5 @@ class Book:
         return f"'{self.title}' by {self.author}"
 
     # Defines an unambiguous, and detailed developer-focused description
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Book(title={self.title!r}, author={self.author!r}, isbn={self.isbn!r})"
