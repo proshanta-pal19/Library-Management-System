@@ -33,3 +33,23 @@ class Member:
 
     def __repr__(self) -> str:
         return f"Member(member_id={self.member_id!r}, name={self.name!r})"
+
+
+class Student(Member):
+    '''A student member with a lower borrowing limit'''
+
+    MAX_BOOKS = 3
+
+    def __init__(self, member_id: str, name: str, semester: str) -> None:
+        super().__init__(member_id, name)
+        self.semester = semester
+
+
+class Teacher(Member):
+    '''A teacher member with a higher borrowing limit'''
+
+    MAX_BOOKS = 5
+
+    def __init__(self, member_id: str, name: str, department: str) -> None:
+        super().__init__(member_id, name)
+        self.department = department
