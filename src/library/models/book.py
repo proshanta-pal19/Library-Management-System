@@ -1,3 +1,4 @@
+from library.exceptions import BookNotAvailableError, BookNotBorrowedError
 # Declares a blueprint named Book
 
 class Book:
@@ -31,13 +32,13 @@ class Book:
     def mark_as_borrowed(self) -> None:
         '''Mark the book as borrowed. Fails if it is already borrowed'''
         if not self._is_available:
-            raise ValueError(f'{self} is already borrowed.')
+            raise BookNotAvailableError(f'{self} is already borrowed.')
         self._is_available = False
 
     def mark_as_returned(self) -> None:
         '''Mark the book as returned. Fails if it is already returned'''
         if self._is_available:
-            raise ValueError(f'{self} was not borrowed.')
+            raise BookNotBorrowedError(f'{self} was not borrowed.')
         self._is_available = True
 
     # Defines string representation of an object.
