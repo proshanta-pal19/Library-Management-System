@@ -7,7 +7,7 @@ from library.exceptions import (
     MemberNotFoundError,
     BookNotAvailableError,
     BookNotBorrowedError,
-    BookLimitReachedError
+    BorrowLimitReachedError
 )
 
 # Library is the manager who owns the collections of books and members, and it decides whether a borrow or return is allowed
@@ -65,7 +65,7 @@ class Library:
         if not book.is_available:
             raise BookNotAvailableError(f'{book} is not available at that time.')
         if member.has_reached_limit():
-            raise BookLimitReachedError(f'{member.name} has reached the borrowing limit.')
+            raise BorrowLimitReachedError(f'{member.name} has reached the borrowing limit.')
 
         book.mark_as_borrowed() 
         member.add_book(book)

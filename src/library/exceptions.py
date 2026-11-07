@@ -28,6 +28,6 @@ class BookNotBorrowedError(LibraryError):
     '''Raised when returning a book that was not borrowed'''
 
 
-class BookLimitReachedError(LibraryError):
+class BorrowLimitReachedError(LibraryError):
     '''Raised when a member tries to exceed the borrowing limit'''
 
