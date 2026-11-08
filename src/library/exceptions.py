@@ -31,3 +31,6 @@ class BookNotBorrowedError(LibraryError):
 class BorrowLimitReachedError(LibraryError):
     '''Raised when a member tries to exceed the borrowing limit'''
 
+
+class StorageError(LibraryError):
+    '''Raised when the data file cannot be read, written, or understood'''

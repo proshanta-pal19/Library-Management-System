@@ -20,6 +20,14 @@ class Library:
         self._books: dict[str, Book] = {}
         self._members: dict[str, Member] = {}
 
+    @property
+    def books(self) -> list[Book]:
+        return list(self._books.values())
+
+    @property
+    def member(self) -> list[Member]:
+        return list(self._members.values())
+
     # Resister a member to the library
     def register_member(self, member: Member) -> None:
         if member.member_id in self._members:

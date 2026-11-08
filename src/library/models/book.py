@@ -41,6 +41,19 @@ class Book:
             raise BookNotBorrowedError(f'{self} was not borrowed.')
         self._is_available = True
 
+    def to_dict(self) -> dict[str, str]:
+        '''Convert the book into a JSON dictionary'''
+        return {
+            'title': self._title,
+            'author': self._author,
+            'isbn': self._isbn
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, str]) -> 'Book':
+        '''Build a Book from a dictionary'''
+        return cls(data['title'], data['author'], data['isbn'])
+
     # Defines string representation of an object.
     def __str__(self) -> str:
         return f"'{self.title}' by {self.author}"
